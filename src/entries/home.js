@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { render } from 'react-dom'
 import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
@@ -8,6 +8,9 @@ import Home from '../pages/containers/home'
 import logger from 'redux-logger'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import thunk from 'redux-thunk'
+
+import { BrowserRouter } from 'react-router-dom';
+import Header from '../pages/components/header';
 
 const logger_ = ({ getState, dispatch }) => next => action => {
   console.log('vamos a enviar esta accion', action)
@@ -33,8 +36,13 @@ const homeContainer = document.getElementById('home-container')
 
 
 render(
-  <Provider store={store}>
-    <Home />
-  </Provider>
+  <BrowserRouter>
+    <Provider store={store}>
+      <Fragment>
+        <Header />
+        <Home />
+      </Fragment>
+    </Provider>
+  </BrowserRouter>
   , homeContainer
 )
