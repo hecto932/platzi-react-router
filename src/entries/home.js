@@ -3,9 +3,12 @@ import { render } from 'react-dom'
 import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import { Map as map } from 'immutable'
-import reducer from '../reducers/index'
-import Home from '../pages/components/home'
+import reducer from '../reducers/index';
+
+import Home from '../pages/components/home';
 import Videos from '../pages/containers/videos';
+import Contact from '../pages/components/contact';
+
 import logger from 'redux-logger'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import thunk from 'redux-thunk'
@@ -43,6 +46,7 @@ render(
         <Header />
         <Route exact path="/" component={Home} />
         <Route exact path="/videos" component={Videos} />
+        <Route exact path="/contacto" component={Contact} />
       </Fragment>
     </Provider>
   </BrowserRouter>
