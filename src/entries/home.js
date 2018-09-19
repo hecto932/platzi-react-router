@@ -4,12 +4,13 @@ import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import { Map as map } from 'immutable'
 import reducer from '../reducers/index'
-import Home from '../pages/containers/home'
+import Home from '../pages/components/home'
+import Videos from '../pages/containers/videos';
 import logger from 'redux-logger'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import thunk from 'redux-thunk'
 
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 import Header from '../pages/components/header';
 
 const logger_ = ({ getState, dispatch }) => next => action => {
@@ -40,7 +41,8 @@ render(
     <Provider store={store}>
       <Fragment>
         <Header />
-        <Home />
+        <Route exact path="/" component={Home} />
+        <Route exact path="/videos" component={Videos} />
       </Fragment>
     </Provider>
   </BrowserRouter>
