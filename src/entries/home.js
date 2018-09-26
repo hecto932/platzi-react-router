@@ -14,7 +14,7 @@ import logger from 'redux-logger'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import thunk from 'redux-thunk'
 
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import Header from '../pages/components/header';
 
 const logger_ = ({ getState, dispatch }) => next => action => {
@@ -45,10 +45,13 @@ render(
     <Provider store={store}>
       <Fragment>
         <Header />
-        <Route exact path="/" component={Home} />
-        <Route exact path="/videos" component={Videos} />
-        <Route exact path="/contacto" component={Contact} />
-        <Route component={NotFound} />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/videos" component={Videos} />
+          <Redirect from="/v" to="/videos" />
+          <Route exact path="/contacto" component={Contact} />
+          <Route component={NotFound} />
+        </Switch>
       </Fragment>
     </Provider>
   </BrowserRouter>
