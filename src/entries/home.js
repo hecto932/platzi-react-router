@@ -8,6 +8,7 @@ import reducer from '../reducers/index';
 import Home from '../pages/components/home';
 import Videos from '../pages/containers/videos';
 import Contact from '../pages/components/contact';
+import NotFound from '../pages/components/not-found';
 
 import logger from 'redux-logger'
 import { composeWithDevTools } from 'redux-devtools-extension'
@@ -47,6 +48,7 @@ render(
         <Route exact path="/" component={Home} />
         <Route exact path="/videos" component={Videos} />
         <Route exact path="/contacto" component={Contact} />
+        <Route component={NotFound} />
       </Fragment>
     </Provider>
   </BrowserRouter>
