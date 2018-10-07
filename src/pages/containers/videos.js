@@ -22,6 +22,14 @@ class Home extends Component {
   handleCloseModal = (event) => {
     this.props.actions.closeModal()
   }
+  componentDidMount() {
+    const search = this.props.location.search;
+    if (search) {
+      const id = search.split('=')[1];
+      this.handleOpenModal(id);
+    }
+  }
+
   render() {
     return (
       <HandleError>
